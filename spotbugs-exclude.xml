@@ -1,0 +1,17 @@
+<FindBugsFilter>
+    <Match>
+        <Class name="~.*\$ObjectFormatConverter" />
+        <Bug pattern="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE,NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE,EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Class name="~com.ttcsolutions.fair.core.model.entity.*_" />
+        <Bug pattern="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD,UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+    <Match>
+        <Class name="~com.ttcsolutions.fair.commons.util.filter.*" />
+        <Bug pattern="SE_BAD_FIELD"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+</FindBugsFilter>

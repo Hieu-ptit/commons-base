@@ -1,0 +1,25 @@
+
+server:
+  port: '8020'
+  error:
+    include-binding-errors: always
+    include-message: always
+management:
+  security:
+    enabled: false
+management.endpoint.health.probes.enabled: true
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: "jdbc:postgresql://192.168.0.104:5432/postgres"
+    username: postgres
+    password: 123456
+  mvc:
+    async:
+      request-timeout: 120000

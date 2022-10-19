@@ -1,47 +1,30 @@
 package com.viettel.api.model.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import java.time.ZonedDateTime;
+import java.time.OffsetDateTime;
 
 @MappedSuperclass
-public abstract class BaseEntity {
-    @CreationTimestamp
-    @Column(columnDefinition = "timestamp default now()")
-    ZonedDateTime createdAt;
+@Data
+@Accessors(chain = true)
+public abstract class BaseEntity<T> {
+  @JsonProperty("created_at")
+  OffsetDateTime createdAt;
+  @JsonProperty("updated_at")
+  OffsetDateTime updatedAt;
 
-    @UpdateTimestamp
-    ZonedDateTime updatedAt;
+  protected abstract T self();
 
-    @PrePersist()
-    public void onCreate() {
-        createdAt = ZonedDateTime.now();
-        updatedAt = createdAt;
-    }
+  public T setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+    return self();
+  }
 
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = ZonedDateTime.now();
-    }
-
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public ZonedDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(ZonedDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  public T setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return self();
+  }
 }

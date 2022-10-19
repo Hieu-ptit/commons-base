@@ -1,0 +1,5 @@
+package com.viettel.api.model;
+
+public enum TransactionType {
+    TOPUP, DEPOSIT, PAYMENT, WITHDRAW, REWARD, LISTING, MATCHING, REMOVE_LISTING, UPDATE_LISTING, STAKE, CLAIM_STAKE
+}

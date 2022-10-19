@@ -1,22 +1,22 @@
 version: "3.3"
 services:
-  api-be-java:
-    image: 'api-be-java:latest'
-    container_name: api-be-java
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://192.168.0.104:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=123456
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-#    restart: always
-    volumes:
-      - /home/hieuptit/Desktop/worker/api/src/main/resources:/usr/app
-    command:
-      - --config.file=/usr/app/application.yml
-#      - ./application.properties:/usr/app/application.properties
-    ports:
-      - 8021:8021
-    network_mode:  bridge
+#  api-be-java:
+#    image: 'api-be-java:latest'
+#    container_name: api-be-java
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://192.168.0.104:5432/postgres
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=123456
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+##    restart: always
+#    volumes:
+#      - /home/hieuptit/Desktop/worker/api/src/main/resources:/usr/app
+#    command:
+#      - --config.file=/usr/app/application.yml
+##      - ./application.properties:/usr/app/application.properties
+#    ports:
+#      - 8021:8021
+#    network_mode:  bridge
 #  zookeeper:
 #    image: 'bitnami/zookeeper:latest'
 #    ports:
@@ -37,8 +37,7 @@ services:
 #    depends_on:
 #      - zookeeper
   postgres:
-    image: 'postgres'
-    container_name: postgres
+    image: 'postgres:latest'
 #    restart: always
     environment:
       - POSTGRES_DB=postgres
@@ -46,7 +45,6 @@ services:
       - POSTGRES_PASSWORD=123456
     ports:
       - '5432:5432'
-    network_mode: bridge
 #networks:
 #    host:
 #      external:
